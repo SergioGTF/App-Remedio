@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Platform } from 'react-native';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Audio } from 'expo-av';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const AddMedicine = ({ navigation }) => {
     const [name, setName] = useState('');
     const [time, setTime] = useState(new Date());
     const [showPicker, setShowPicker] = useState(false);
 
-    const playAlarm = async () => {
+    /*const playAlarm = async () => {
         try {
         const { sound } = await Audio.Sound.createAsync(
             require('../assets/alarm.mp3') 
@@ -17,11 +18,30 @@ const AddMedicine = ({ navigation }) => {
         } catch (error) {
         console.log('Erro ao reproduzir o som:', error);
         }
-    };
+    }; */
+    
+    const handleAddMedicine = async () => {
+        if (!name.trim()) {
+            alert('Por favor, insira o nome do medicamento.');
+            return;
+        }
+    
+        const newMedicine = {
+            name,
+            time: time.toLocaleTimeString(),
+        };
+    
+        try {
+            const existingData = await AsyncStorage.getItem('medicines');
+            const medicines = existingData ? JSON.parse(existingData) : [];
+            medicines.push(newMedicine);
+            await AsyncStorage.setItem('medicines', JSON.stringify(medicines));
+            console.log('Medicamento salvo:', newMedicine);
+        } catch (error) {
+            console.log('Erro ao salvar medicamento:', error);
+        }
 
-    const handleAddMedicine = () => {
-        console.log(`Medicamento: ${name}, Horário: ${time.toLocaleTimeString()}`);
-        playAlarm(); 
+        // playAlarm();
         navigation.goBack();
     };
 

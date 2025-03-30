@@ -11,9 +11,21 @@ const AppNavigator = () => {
     return (
         <NavigationContainer>
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={Home} />
-            <Stack.Screen name="AddMedicine" component={AddMedicine} />
-            <Stack.Screen name="MedicineList" component={MedicineList} />
+        <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ title: 'Tela Principal' }}
+        />
+        <Stack.Screen
+            name="AddMedicine"
+            component={AddMedicine}
+            options={{ title: 'Adicionar Medicamento' }}
+        />
+        <Stack.Screen
+            name="MedicineList"
+            component={MedicineList}
+            options={{ title: 'Lista de Medicamentos' }}
+        />
         </Stack.Navigator>
         </NavigationContainer>
     );
