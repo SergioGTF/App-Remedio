@@ -16,7 +16,7 @@ const Cadastro = ({ navigation }) => {
             await SecureStore.setItemAsync('username', username);
             await SecureStore.setItemAsync('password', password);
             Alert.alert('Cadastro bem-sucedido!', 'Agora você pode fazer login.');
-            navigation.replace('Login'); // Redireciona para a tela de login
+            navigation.replace('Login'); 
         } catch (error) {
             console.log('Erro ao cadastrar usuário:', error);
         }
