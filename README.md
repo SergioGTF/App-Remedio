@@ -105,11 +105,41 @@ AppRemedio/
 
 ---
 
-## 🛠️ **Melhorias Futuras**
-- Notificações: Lembretes no horário do medicamento.
-- Edição/Exclusão: Permitir alterar ou remover medicamentos.
-- Sincronização na Nuvem: Acessar dados em múltiplos dispositivos.
-- Modo Escuro: Melhorar experiência visual.
+## 🛠️ Melhorias Futuras
+
+### 🔄 Integração Avançada
+- **API de Bulas de Remédios**:
+  - Consulta em tempo real via Bulário Eletrônico da ANVISA
+  - Detalhes completos (princípio ativo, posologia, contraindicações)
+  - Cache offline das últimas consultas
+
+- **Banco de Dados em Nuvem**:
+  - Substituir AsyncStorage por:
+    - ✅ Firebase Firestore (sincronização em tempo real)
+    - ✅ Supabase (alternativa open-source)
+  - Autenticação com Firebase Auth/OAuth2
+
+### ✨ Novas Funcionalidades
+- **Sistema de Recomendação**:
+  - Sugere medicamentos similares por princípio ativo
+  - Alertas sobre interações perigosas
+
+- **Gerenciamento Avançado**:
+  - ✏️ Edição/Exclusão de medicamentos
+  - ☁️ Sincronização multi-dispositivo
+
+### 🔔 Notificações
+- ⏰ Lembretes push com `expo-notifications`
+- ⚡ Ajuste inteligente de horários (ex: "Tome 30min antes do almoço")
+
+### 🎨 UX/UI
+- 🌙 Modo escuro/claro
+- 📊 Relatórios de uso (gráficos de adesão)
+
+### 🛡️ Segurança
+- 🔐 Backup automático criptografado
+- 📜 Conformidade com LGPD
+
 
 ## 📧 Contato
 - Autor: Sergio Gabriel
