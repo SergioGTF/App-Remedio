@@ -4,6 +4,25 @@ O **App Remédio** é um aplicativo desenvolvido em React Native que ajuda os us
 
 ---
 
+## 🆕 O que há de novo?
+
+### **1. Cálculo Automático de Horários**
+- Agora o aplicativo calcula automaticamente os horários das doses com base no horário inicial e no intervalo fornecido pelo usuário.
+- Exibição dos horários calculados diretamente na lista de medicamentos.
+
+### **2. Melhorias na Autenticação**
+- Separação das telas de login e cadastro para uma experiência mais organizada.
+- Armazenamento seguro de credenciais usando `SecureStore`.
+
+### **3. Fluxo de Logout**
+- Adicionado botão de logout na tela principal para limpar as credenciais e redirecionar para a tela de login.
+
+### **4. Validações Aprimoradas**
+- Validação de campos obrigatórios em todas as telas para evitar erros de entrada.
+- Tratamento de erros ao salvar e exibir medicamentos.
+
+---
+
 ## 📋 Funcionalidades
 
 ### 🔐 Cadastro e Login de Usuários

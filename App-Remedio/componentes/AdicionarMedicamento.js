@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { calculateTimes } from '../utils/calculoHorarios'; // Importando a função utilitária
 
 const AddMedicine = ({ navigation }) => {
     const [name, setName] = useState('');
@@ -20,7 +21,7 @@ const AddMedicine = ({ navigation }) => {
         }
     
         try {
-            const times = calculateTimes(startTime, intervalInHours);
+            const times = calculateTimes(startTime, intervalInHours); // Chamando a função utilitária
     
             if (times.length === 0) {
                 Alert.alert('Erro', 'Não foi possível calcular os horários.');
@@ -44,36 +45,6 @@ const AddMedicine = ({ navigation }) => {
         } catch (error) {
             console.log('Erro ao salvar medicamento:', error);
         }
-    };
-
-    const calculateTimes = (startTime, interval) => {
-        const [startHour, startMinute] = startTime.split(':').map(Number);
-    
-        if (isNaN(startHour) || isNaN(startMinute) || startHour < 0 || startHour >= 24 || startMinute < 0 || startMinute >= 60) {
-            Alert.alert('Erro', 'Horário inicial inválido. Use o formato HH:mm.');
-            return [];
-        }
-    
-        if (isNaN(interval) || interval <= 0) {
-            Alert.alert('Erro', 'Intervalo inválido. Deve ser um número maior que 0.');
-            return [];
-        }
-    
-        const times = [];
-        let currentHour = startHour;
-        let currentMinute = startMinute;
-    
-        for (let i = 0; i < 24 / interval; i++) {
-            const formattedTime = `${String(currentHour).padStart(2, '0')}:${String(currentMinute).padStart(2, '0')}`;
-            times.push(formattedTime);
-    
-            currentHour += interval;
-            if (currentHour >= 24) {
-                currentHour -= 24;
-            }
-        }
-    
-        return times;
     };
 
     return (
