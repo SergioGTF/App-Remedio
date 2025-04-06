@@ -12,13 +12,20 @@ const MedicineList = () => {
                 try {
                     const data = await AsyncStorage.getItem('medicines');
                     if (data) {
-                        setMedicines(JSON.parse(data));
+                        const parsedData = JSON.parse(data);
+                        if (Array.isArray(parsedData)) {
+                            setMedicines(parsedData);
+                        } else {
+                            console.log('Dados inválidos no AsyncStorage');
+                            setMedicines([]);
+                        }
                     }
                 } catch (error) {
                     console.log('Erro ao buscar medicamentos:', error);
+                    setMedicines([]);
                 }
             };
-
+    
             fetchMedicines();
         }, [])
     );
@@ -26,7 +33,9 @@ const MedicineList = () => {
     const renderItem = ({ item }) => (
         <View style={styles.item}>
             <Text style={styles.name}>{item.name}</Text>
-            <Text style={styles.time}>Horário: {item.time}</Text>
+            <Text style={styles.times}>
+                Horários: {Array.isArray(item.times) ? item.times.join(', ') : 'Nenhum horário disponível'}
+            </Text>
         </View>
     );
 

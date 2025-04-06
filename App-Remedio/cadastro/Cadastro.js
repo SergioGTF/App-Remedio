@@ -11,12 +11,13 @@ const Cadastro = ({ navigation }) => {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
             return;
         }
-
+    
         try {
             await SecureStore.setItemAsync('username', username);
             await SecureStore.setItemAsync('password', password);
             Alert.alert('Cadastro bem-sucedido!', 'Agora você pode fazer login.');
             navigation.replace('Login'); 
+            console.log('Credenciais salvas:', username, password);
         } catch (error) {
             console.log('Erro ao cadastrar usuário:', error);
         }

@@ -11,11 +11,11 @@ const LoginUsuario = ({ navigation }) => {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
             return;
         }
-
+    
         try {
             const storedUsername = await SecureStore.getItemAsync('username');
             const storedPassword = await SecureStore.getItemAsync('password');
-
+    
             if (username === storedUsername && password === storedPassword) {
                 Alert.alert('Login bem-sucedido!', 'Bem-vindo ao App Remédio!');
                 navigation.replace('Home');
@@ -25,7 +25,7 @@ const LoginUsuario = ({ navigation }) => {
         } catch (error) {
             console.log('Erro ao realizar login:', error);
         }
-    };
+};
 
     return (
         <View style={styles.container}>
