@@ -78,17 +78,26 @@ O **App Remédio** é um aplicativo desenvolvido em React Native que ajuda os us
 ```
 AppRemedio/
 ├── App-Remedio/
-│   ├── componentes/
-│   │   ├── AdicionarMedicamento.js  # Tela para adicionar medicamentos
+│   ├── components/
+│   │   ├── AdicionarMedicamento.js  # Componente para adicionar medicamentos
+│   │   ├── Principal.js             # Componente principal
+│   ├── screens/
+│   │   ├── auth/
+│   │   │   ├── CriarConta.js        # Tela de criação de conta
+│   │   │   ├── LoginUsuario.js      # Tela de login de usuários
 │   │   ├── ListaMedicamentos.js     # Tela para listar medicamentos
-│   │   ├── Principal.js             # Tela principal do app
-│   ├── cadastro/
-│   │   ├── Cadastro.js              # Tela de cadastro de usuários
-│   ├── login/
-│   │   ├── LoginUsuario.js          # Tela de login de usuários
-│   ├── navegacao/
-│   │   ├── NavegacaoApp.js          # Configuração de navegação
-│   ├── assets/                      # Arquivos estáticos (imagens, sons, etc.)
+│   ├── navigation/
+│   │   ├── NavegacaoApp.js          # Configuração de navegação do app
+│   ├── context/
+│   │   ├── AuthContext.js           # Contexto de autenticação
+│   ├── services/
+│   │   ├── Notifications.js         # Serviço de notificações
+│   ├── utils/
+│   │   ├── CalcTime.js              # Utilitário para cálculos de tempo
+│   │   ├── Validators.js            # Utilitário para validações
+│   ├── assets/                      # Arquivos estáticos (imagens, ícones)
+│   ├── styles/
+│   │   ├── global.js                # Estilos globais do app
 │   ├── App.js                       # Arquivo principal do app
 │   ├── index.js                     # Ponto de entrada do app
 │   ├── app.json                     # Configurações do Expo
