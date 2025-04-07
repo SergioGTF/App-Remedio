@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 import * as SecureStore from 'expo-secure-store';
+import { MaterialIcons } from '@expo/vector-icons';
 
-const Cadastro = ({ navigation }) => {
+const CriarConta = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -11,34 +12,39 @@ const Cadastro = ({ navigation }) => {
             Alert.alert('Erro', 'Por favor, preencha todos os campos.');
             return;
         }
-    
+
         try {
             await SecureStore.setItemAsync('username', username);
             await SecureStore.setItemAsync('password', password);
             Alert.alert('Cadastro bem-sucedido!', 'Agora você pode fazer login.');
-            navigation.replace('Login'); 
-            console.log('Credenciais salvas:', username, password);
+            navigation.replace('Login');
         } catch (error) {
-            console.log('Erro ao cadastrar usuário:', error);
+            console.log('Erro ao criar conta:', error);
         }
     };
 
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Cadastro</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Usuário"
-                value={username}
-                onChangeText={setUsername}
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Senha"
-                secureTextEntry
-                value={password}
-                onChangeText={setPassword}
-            />
+            <View style={styles.inputContainer}>
+                <MaterialIcons name="person" size={20} color="gray" />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Usuário"
+                    value={username}
+                    onChangeText={setUsername}
+                />
+            </View>
+            <View style={styles.inputContainer}>
+                <MaterialIcons name="lock" size={20} color="gray" />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Senha"
+                    secureTextEntry
+                    value={password}
+                    onChangeText={setPassword}
+                />
+            </View>
             <TouchableOpacity style={styles.button} onPress={handleRegister}>
                 <Text style={styles.buttonText}>Cadastrar</Text>
             </TouchableOpacity>
@@ -65,13 +71,19 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         textAlign: 'center',
     },
-    input: {
-        height: 40,
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
         borderColor: 'gray',
         borderWidth: 1,
-        marginBottom: 20,
-        paddingHorizontal: 10,
         borderRadius: 5,
+        paddingHorizontal: 10,
+        marginBottom: 20,
+    },
+    input: {
+        flex: 1,
+        height: 40,
+        marginLeft: 10,
     },
     button: {
         backgroundColor: '#28A745',
@@ -90,4 +102,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Cadastro;
+export default CriarConta;

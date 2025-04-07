@@ -1,8 +1,13 @@
 import React from 'react';
-import AppNavigator from './navegacao/NavegacaoApp';
+import { AuthProvider } from './context/AuthContext'; 
+import AppNavigator from './navigation/NavegacaoApp';
 
 const App = () => {
-  return <AppNavigator />;
+  return (
+    <AuthProvider>
+      <AppNavigator />
+    </AuthProvider>
+  );
 };
 
 export default App;
