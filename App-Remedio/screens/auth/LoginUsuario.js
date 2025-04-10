@@ -50,9 +50,9 @@ const LoginUsuario = ({ navigation }) => {
             </TouchableOpacity>
             <TouchableOpacity
                 style={[globalStyles.button, globalStyles.registerButton]}
-                onPress={() => navigation.replace('Cadastro')}
+                onPress={() => navigation.replace('Criar Conta')}
             >
-                <Text style={globalStyles.buttonText}>Cadastrar</Text>
+                <Text style={globalStyles.buttonText}>Criar Conta</Text>
             </TouchableOpacity>
         </View>
     );

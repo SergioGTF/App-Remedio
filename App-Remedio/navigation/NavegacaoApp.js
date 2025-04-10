@@ -5,7 +5,7 @@ import Home from '../components/Principal';
 import AddMedicine from '../components/AdicionarMedicamento'; 
 import MedicineList from '../screens/ListaMedicamentos';
 import LoginUsuario from '../screens/auth/LoginUsuario';
-import Cadastro from '../screens/auth/CriarConta';
+import CriarConta from '../screens/auth/CriarConta';
 import { AuthContext } from '../context/AuthContext';
 import { globalStyles } from '../styles/global';
 import { ActivityIndicator, View } from 'react-native';
@@ -55,8 +55,8 @@ const AppNavigator = () => {
                             }}
                         />
                         <Stack.Screen
-                            name="Cadastro"
-                            component={Cadastro}
+                            name="Criar Conta"
+                            component={CriarConta}
                             options={{ 
                                 title: 'Criar Conta',
                                 headerShown: false 

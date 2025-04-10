@@ -25,7 +25,7 @@ const CriarConta = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Cadastro</Text>
+            <Text style={styles.title}>Criar Conta</Text>
             <View style={styles.inputContainer}>
                 <MaterialIcons name="person" size={20} color="gray" />
                 <TextInput
@@ -46,7 +46,7 @@ const CriarConta = ({ navigation }) => {
                 />
             </View>
             <TouchableOpacity style={styles.button} onPress={handleRegister}>
-                <Text style={styles.buttonText}>Cadastrar</Text>
+                <Text style={styles.buttonText}>Criar Conta</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 style={[styles.button, styles.loginButton]}
