@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, FlatList, StyleSheet, TouchableOpacity, Alert } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@expo/vector-icons';
 import { globalStyles } from '../styles/global';
@@ -15,13 +15,35 @@ const ListaMedicamentos = () => {
         fetchMedicines();
     }, []);
 
-    const renderItem = ({ item }) => (
+    const deleteMedicine = async (index) => {
+        Alert.alert(
+            'Confirmar Exclusão',
+            'Você tem certeza que deseja excluir este medicamento?',
+            [
+                { text: 'Cancelar', style: 'cancel' },
+                {
+                    text: 'Excluir',
+                    onPress: async () => {
+                        const updatedMedicines = medicines.filter((_, i) => i !== index);
+                        setMedicines(updatedMedicines);
+                        await AsyncStorage.setItem('medicines', JSON.stringify(updatedMedicines));
+                    },
+                },
+            ],
+            { cancelable: true }
+        );
+    };
+
+    const renderItem = ({ item, index }) => (
         <View style={styles.card}>
             <Text style={styles.name}>{item.name}</Text>
             <Text style={styles.times}>
                 Horários: {item.times.join(', ')}
             </Text>
-            <TouchableOpacity style={styles.deleteButton}>
+            <TouchableOpacity
+                style={styles.deleteButton}
+                onPress={() => deleteMedicine(index)}
+            >
                 <MaterialIcons name="delete" size={24} color="red" />
             </TouchableOpacity>
         </View>
